@@ -2,6 +2,7 @@ package com.example.test_webview_demo.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Build;
@@ -9,7 +10,13 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tencent.smtt.export.external.interfaces.SslError;
+import com.tencent.smtt.export.external.interfaces.SslErrorHandler;
+import com.tencent.smtt.export.external.interfaces.WebResourceError;
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
+import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.QbSdk;
+import com.tencent.smtt.sdk.WebChromeClient;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebSettings.LayoutAlgorithm;
 import com.tencent.smtt.sdk.WebView;
@@ -25,6 +32,55 @@ public class X5WebView extends WebView {
 			view.loadUrl(url);
 			return true;
 		}
+
+		@Override
+		public void onPageStarted(WebView webView, String s, Bitmap bitmap) {
+			super.onPageStarted(webView, s, bitmap);
+		}
+
+		@Override
+		public void onPageFinished(WebView webView, String s) {
+			super.onPageFinished(webView, s);
+		}
+
+		@Override
+		public WebResourceResponse shouldInterceptRequest(WebView webView, String s) {
+			return super.shouldInterceptRequest(webView, s);
+		}
+
+		@Override
+		public WebResourceResponse shouldInterceptRequest(WebView webView, WebResourceRequest webResourceRequest) {
+			return super.shouldInterceptRequest(webView, webResourceRequest);
+		}
+
+		@Override
+		public boolean shouldOverrideUrlLoading(WebView webView, WebResourceRequest webResourceRequest) {
+			return super.shouldOverrideUrlLoading(webView, webResourceRequest);
+		}
+
+		@Override
+		public void onReceivedSslError(WebView webView, SslErrorHandler sslErrorHandler, SslError sslError) {
+			super.onReceivedSslError(webView, sslErrorHandler, sslError);
+		}
+
+		@Override
+		public void onReceivedError(WebView webView, int i, String s, String s1) {
+			super.onReceivedError(webView, i, s, s1);
+		}
+
+		@Override
+		public void onReceivedError(WebView webView, WebResourceRequest webResourceRequest, WebResourceError webResourceError) {
+			super.onReceivedError(webView, webResourceRequest, webResourceError);
+		}
+	};
+
+	private WebChromeClient webChromeClient = new WebChromeClient() {
+
+		@Override
+		public void onProgressChanged(WebView webView, int i) {
+			super.onProgressChanged(webView, i);
+		}
+
 	};
 
 	@SuppressLint("SetJavaScriptEnabled")
